@@ -2,30 +2,32 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //Create Schema
-userSchema = new Schema({
-  name: {
+menuItemSchema = new Schema({
+  productid: {
+    type: Number,
+    required: true
+  },
+  category: {
     type: String,
     required: true
   },
-  email: {
+  comboname: {
     type: String,
     required: true
   },
-  username: {
+  price: {
+    type: Number,
+    required: true
+  },
+  description: {
     type: String,
     required: true
   },
-  password: {
-    type: String,
-    required: true
-  },
-  phoneNumber: {
-    type: String,
-    required: true
-  },
-  location: {
-    type: String
-  },
+  //Not Sure Yet
+  // User: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "users"
+  // },
   date: {
     type: Date,
     default: Date.now
@@ -33,4 +35,4 @@ userSchema = new Schema({
   //Not Sure Yet
 });
 
-module.exports = User = mongoose.model("users", userSchema);
+module.exports = MenuItem = mongoose.model("menuitem", menuItemSchema);

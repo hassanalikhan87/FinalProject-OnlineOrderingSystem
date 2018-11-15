@@ -4,22 +4,26 @@
   "description": "Online Ordering Portal for local restaurants.",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Hassan Ali Khan, Ruby Banga, Sunny Desai",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
     "express": "^4.16.4",
     "express-router": "0.0.1",
     "jsonwebtoken": "^8.3.0",
+    "mongodb": "~3.0.8",
     "mongoose": "^5.3.8",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "validator": "^10.8.0",
-    "mongodb": "~3.0.8"
+    "validator": "^10.8.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.5"
