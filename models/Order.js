@@ -7,24 +7,18 @@ const OrderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
-  text: {
-    type: String,
-    required: true
+  menuitems: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "menuitem"
+    }
+  ],
+  specialinstructions: {
+    type: String
   },
   name: {
     type: String
   },
-  avatar: {
-    type: String
-  },
-  likes: [
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "users"
-      }
-    }
-  ],
   date: {
     type: Date,
     default: Date.now
