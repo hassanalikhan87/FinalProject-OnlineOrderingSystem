@@ -5,9 +5,9 @@ import { addGuestItem } from "../../actions/guestOrderActions";
 // import { Link } from "react-router-dom";
 // import isEmpty from "../../validation/is-empty";
 
-class MenuContent extends Component {
+class MenuDisplay extends Component {
   render() {
-    const { menuitem } = this.props;
+    const { basicmenu } = this.props;
     return (
       <div className="card card-body bg-disabled mb-3">
         <div className="row">
@@ -19,27 +19,19 @@ class MenuContent extends Component {
             />
           </div>
           <div className="col-lg-6 col-md-4 col-8 text-dark text-left">
-            <h3>Combo Number: {menuitem.productid}</h3>
-            <h6>{menuitem.comboname}</h6>
-            <h3>${menuitem.price}</h3>
-            <h6>{menuitem.category}</h6>
-            <p>{menuitem.description}</p>
-            <code>{menuitem._id}</code>
+            <h3>Combo Number: {basicmenu.productid}</h3>
+            <h6>{basicmenu.comboname}</h6>
+            <h3>${basicmenu.price}</h3>
+            <h6>{basicmenu.category}</h6>
+            <p>{basicmenu.description}</p>
+            <code>{basicmenu._id}</code>
           </div>
-        </div>
-        <div className="col-2-end text-right">
-          <button
-            className="btn btn-success"
-            onClick={() => this.props.addGuestItem(menuitem)}
-          >
-            Add to Order
-          </button>
         </div>
       </div>
     );
   }
 }
-MenuContent.proptype = {
+MenuDisplay.proptype = {
   menuitem: PropTypes.object.isRequired
 };
 
@@ -51,4 +43,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addGuestItem }
-)(MenuContent);
+)(MenuDisplay);

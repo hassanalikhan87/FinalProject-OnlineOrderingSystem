@@ -15,13 +15,13 @@ import Landing from "./components/layout/Landing";
 import Footer from "./components/layout/Footer";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
-import Menu from "./components/auth/Menu";
+import Order from "./components/auth/Order";
 import Dashboard from "./components/dashboard/Dashboard";
 import Updatemenu from "./components/restaurant/Updatemenu";
-import hassan from "./components/dashboard/textdash";
+import Menu from "./components/dashboard/Menu";
 
 import "./App.css";
-import Restaurantdash from "./components/dashboard/restaurantdash";
+import CreateOrder from "./components/dashboard/Createorder";
 
 //check for token
 if (localStorage.jwtToken) {
@@ -50,15 +50,20 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/menu2" component={Menu} />
-            <Route exact path="/hassan" component={hassan} />
+            <Route exact path="/menu" component={Menu} />
             <div className="container">
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/updatemenu" component={Updatemenu} />
-              <Route exact path="/menu" component={Restaurantdash} />
+
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/order" component={Order} />
+                <PrivateRoute
+                  exact
+                  path="/create-order"
+                  component={CreateOrder}
+                />
               </Switch>
             </div>
             <Footer />

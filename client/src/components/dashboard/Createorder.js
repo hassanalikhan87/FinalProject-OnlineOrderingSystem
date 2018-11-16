@@ -6,7 +6,7 @@ import MenuContent from "../auth/Menucontent";
 import { getCurrentMenu } from "../../actions/menuActions";
 import Spinner from "../common/Spinner";
 
-class Restaurantdash extends Component {
+class CreateOrder extends Component {
   componentDidMount() {
     this.props.getCurrentMenu();
   }
@@ -19,9 +19,11 @@ class Restaurantdash extends Component {
       menuContent = <Spinner />;
     } else {
       if (MENU.length > 0) {
-        menuContent = MENU.map(menuitem => (
-          <MenuContent key={menuitem.productid} menuitem={menuitem} />
-        ));
+        menuContent = MENU.sort((a, b) => a.productid - b.productid).map(
+          menuitem => (
+            <MenuContent key={menuitem.productid} menuitem={menuitem} />
+          )
+        );
       } else {
         menuContent = <h4>No menu found...</h4>;
       }
@@ -48,7 +50,7 @@ class Restaurantdash extends Component {
   }
 }
 
-Restaurantdash.propTypes = {
+CreateOrder.propTypes = {
   getCurrentMenu: PropTypes.func.isRequired,
   menu: PropTypes.object.isRequired
 };
@@ -61,4 +63,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getCurrentMenu }
-)(Restaurantdash);
+)(CreateOrder);

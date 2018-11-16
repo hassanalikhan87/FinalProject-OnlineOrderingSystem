@@ -13,17 +13,21 @@ class Navbar extends Component {
   }
   render() {
     const { isAuthenticated } = this.props.auth;
+    const { items } = this.props.guestorder;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/menu">
-            Menu
+          <Link className="nav-link" to="/create-order">
+            Create Order
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/signup">
-            Profile
+          <Link className="nav-link" to="/order">
+            Order -{"  "}
+            <strong className="text-light font-weight-bold font-italic">
+              {items.length}
+            </strong>
           </Link>
         </li>
         <li className="nav-item">
@@ -91,7 +95,8 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  guestorder: state.guestorder
 });
 
 export default connect(

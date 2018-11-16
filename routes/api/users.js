@@ -88,43 +88,45 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   //find user by email
-  User.findOne({ email }).then(user => {
-    if (!user) {
-      errors.email = "User not found";
-      return res.status(404).json(errors);
-    }
-
-    //check password
-
-    bcrypt.compare(password, user.password).then(isMatch => {
-      if (isMatch) {
-        //Matching User
-        const payload = {
-          id: user.id,
-          name: user.name,
-          username: user.username,
-          email: user.email,
-          phoneNumber: user.phoneNumber,
-          location: user.location
-        }; //create jwt payload
-        //Sign Token
-        jwt.sign(
-          payload,
-          keys.SecretOrKey,
-          { expiresIn: 3600 },
-          (err, token) => {
-            res.json({
-              success: true,
-              token: "Bearer " + token
-            });
-          }
-        );
-      } else {
-        errors.password = "Password Incorrecrt";
-        res.status(400).json(errors);
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        errors.email = "User not found";
+        return res.status(404).json(errors);
       }
-    });
-  });
+
+      //check password
+
+      bcrypt.compare(password, user.password).then(isMatch => {
+        if (isMatch) {
+          //Matching User
+          const payload = {
+            id: user.id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            location: user.location
+          }; //create jwt payload
+          //Sign Token
+          jwt.sign(
+            payload,
+            keys.SecretOrKey,
+            { expiresIn: 3600 },
+            (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
+            }
+          );
+        } else {
+          errors.password = "Password Incorrecrt";
+          res.status(400).json(errors);
+        }
+      });
+    })
+    .catch(err => res.status(500).send({ message: err }));
 });
 
 //@route    GET api/users/Current

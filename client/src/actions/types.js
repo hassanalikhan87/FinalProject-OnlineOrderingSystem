@@ -10,3 +10,6 @@ export const MENU_LOADING = "MENU_LOADING";
 export const MENU_NOT_FOUND = "MENU_NOT_FOUND";
 export const CLEAR_CURRENT_MENU = "CLEAR_CURRENT_MENU";
 export const GET_MENUS = "GET_MENUS";
+export const ADD_ITEM = "ADD_ITEM";
+export const REMOVE_ITEM = "REMOVE_ITEM";
+export const CLEAR_ORDER = "CLEAR_ORDER";

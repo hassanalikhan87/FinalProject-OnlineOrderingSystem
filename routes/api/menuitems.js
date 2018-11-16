@@ -5,14 +5,19 @@ const router = express.Router();
 //Test
 
 //Load menu validation
-const validateMenuUpdateInput = require("../../validation/updatemenu");
+const validateMenuInput = require("../../validation/updatemenu");
 
 //Load models
 const MenuItem = require("../../models/MenuItem");
-
 // router.get("/", (req, res) => res.json({ msg: "MenuItems Work" }));
 
 router.post("/update", (req, res) => {
+  const { errors, isValid } = validateMenuInput(req.body);
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   MenuItem.findOne({ productid: req.body.productid }).then(item => {
     if (item) {
       errors.productid = "Product already exists";
