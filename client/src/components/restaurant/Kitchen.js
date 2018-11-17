@@ -9,17 +9,19 @@ class Kitchen extends Component {
     kitchenorders: []
   };
   // }
-  componentDidMount() {
+  componentWillMount() {
     axios
       .get("/api/orders")
       .then(res => {
         console.log(res.data);
+        let kitchenorders = [];
+        res.data.map(data => kitchenorders.push(data.menuitems));
 
-        const kitchenorders = res.data[0].menuitems;
-        console.log(res.data.menuitems);
+        // console.log(res.data.menuitems);
         this.setState({ kitchenorders });
-        console.log(this.state.kitchenorders);
+        // console.log(this.state.kitchenorders);
         console.log(kitchenorders);
+        // this.state.kitchenorders.map(kitchenorder => console.log(kitchenorder));
       })
       .catch(err => {
         // TODO: Handle errors mo betta
@@ -36,30 +38,53 @@ class Kitchen extends Component {
   render() {
     return (
       <div>
-        {/* <ul>{kel.data}</ul> */}
         <div className="display-1 col-12 text-center">Guest Orders</div>
-        {this.state.kitchenorders.map(kitchenorders => (
+        {this.state.kitchenorders.map(kitchenorder =>
+          kitchenorder.map(individualorders => (
+            <div>
+              <div className="card card-body mb-3 col-12">
+                <div>
+                  <div className="h3 text-dark">
+                    Combo Number: {individualorders.productid}
+                  </div>
+                  <div className="font-weight-bold text-danger">
+                    {individualorders.comboname}
+                  </div>
+                  <div className=" h5 text-dark">
+                    Price: {individualorders.price}
+                  </div>
+                  <div>Description</div>
+                  <div className="text-info">
+                    {individualorders.description}
+                  </div>
+                  <div className="text-info">{individualorders.date}</div>
+
+                  <br />
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+        {/* {this.state.kitchenorders.map(kitchenorder => (
           <div>
             <div className="card card-body mb-3 col-12">
               <div>
                 <div className="h3 text-dark">
-                  Combo Number: {kitchenorders.productid}
+                  Combo Number: {kitchenorder.productid}
                 </div>
                 <div className="font-weight-bold text-danger">
-                  {kitchenorders.comboname}
+                  {kitchenorder.comboname}
                 </div>
-                <div className=" h5 text-dark">
-                  Price: {kitchenorders.price}
-                </div>
+                <div className=" h5 text-dark">Price: {kitchenorder.price}</div>
                 <div>Description</div>
-                <div className="text-info">{kitchenorders.description}</div>
-                <div className="text-info">{kitchenorders.date}</div>
+                <div className="text-info">{kitchenorder.description}</div>
+                <div className="text-info">{kitchenorder.date}</div>
 
                 <br />
               </div>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     );
   }
