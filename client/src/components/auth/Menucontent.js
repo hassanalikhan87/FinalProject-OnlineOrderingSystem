@@ -9,14 +9,10 @@ class MenuContent extends Component {
   render() {
     const { menuitem } = this.props;
     return (
-      <div className="card card-body bg-disabled mb-3">
+      <div className="card card-body bg-disabled">
         <div className="row">
           <div className="col-4">
-            <img
-              src="https://crosstec.org/media/contentbuilder/plugins/image_scale/placeholder.jpg"
-              alt=""
-              className="rounded-circle"
-            />
+            <img src={menuitem.imageurl} alt="" className="img-thumbnail" />
           </div>
           <div className="col-lg-6 col-md-4 col-8 text-dark text-left">
             <h3>Combo Number: {menuitem.productid}</h3>

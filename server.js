@@ -14,10 +14,10 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+console.log("KUTTI");
 //configurating database
-const db = process.env.MongoURI || "mongodb://localhost/royalkebab_db";
-
+// const db = process.env.MongoURI || "mongodb://localhost/royalkebab_db";
+const db = require("./config/keys").mongoURI;
 //connect to MongoDB
 
 mongoose

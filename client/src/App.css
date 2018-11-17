@@ -13,6 +13,14 @@ img {
   margin-bottom: -50px;
 }
 
+.menubackdrop {
+  background-color: orange;
+  position: relative;
+  background-position: center;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
 .landing-inner {
   padding-top: 80px;
 }
