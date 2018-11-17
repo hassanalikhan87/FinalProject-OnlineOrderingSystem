@@ -19,6 +19,7 @@ import Order from "./components/auth/Order";
 import Dashboard from "./components/dashboard/Dashboard";
 import Updatemenu from "./components/restaurant/Updatemenu";
 import Menu from "./components/dashboard/Menu";
+import Kitchen from "./components/restaurant/Kitchen";
 
 import "./App.css";
 import CreateOrder from "./components/dashboard/Createorder";
@@ -55,6 +56,7 @@ class App extends Component {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/updatemenu" component={Updatemenu} />
+              <Route exact path="/kitchen" component={Kitchen} />
 
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />

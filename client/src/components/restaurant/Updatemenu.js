@@ -41,7 +41,8 @@ class Updatemenu extends Component {
       productid: this.state.productid,
       category: this.state.category,
       price: this.state.price,
-      description: this.state.description
+      description: this.state.description,
+      imageurl: this.state.imageurl
     };
     this.props.updateItem(newMenuItem, this.props.history);
   }
@@ -96,6 +97,14 @@ class Updatemenu extends Component {
                     value={this.state.description}
                     onChange={this.onChange}
                     error={errors.description}
+                  />
+                  <TextFieldGroup
+                    placeholder="imageurl"
+                    name="imageurl"
+                    type="imageurl"
+                    value={this.state.imageurl}
+                    onChange={this.onChange}
+                    error={errors.imageurl}
                   />
                 </div>
 

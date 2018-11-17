@@ -31,15 +31,14 @@ router.post("/update", (req, res) => {
         category: req.body.category,
         comboname: req.body.comboname,
         price: req.body.price,
-        description: req.body.description
+        description: req.body.description,
+        imageurl: req.body.imageurl
       });
       console.log("updated");
       console.log(newMenuItem);
       console.log("updatednew");
-      newMenuItem
-        .save()
-        .then(item => res.json(item)) //ASK ALEC
-        .catch(err => console.log(err));
+      newMenuItem.save().then(item => res.json(item)); //ASK ALEC
+      // .catch(err => console.log(err));
     }
     console.log("Yayyy");
   });

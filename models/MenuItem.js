@@ -23,11 +23,10 @@ menuItemSchema = new Schema({
     type: String,
     required: true
   },
-  //Not Sure Yet
-  // User: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "users"
-  // },
+  imageurl: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

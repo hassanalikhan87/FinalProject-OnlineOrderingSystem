@@ -30,7 +30,7 @@ class CreateOrder extends Component {
     }
 
     return (
-      <div className="bg-secondary">
+      <div className="bg-warning">
         <div className="container ">
           <div className="row">
             <div className="col-md-12">
@@ -39,9 +39,9 @@ class CreateOrder extends Component {
                 Choose from the options
               </p>
               {menuContent}
-              <hr />
-              <hr />
-              <hr />
+              <br />
+              <br />
+              <br />
             </div>
           </div>
         </div>

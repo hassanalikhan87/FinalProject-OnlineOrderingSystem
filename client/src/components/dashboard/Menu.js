@@ -30,19 +30,15 @@ class Menu extends Component {
     }
 
     return (
-      <div className="bg-secondary">
-        <div className="container ">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-1 text-center text-light">Menu</h1>
-              <p className="lead text-center text-light">
-                Choose from the options
-              </p>
-              {menuDisplay}
-              <hr />
-              <hr />
-              <hr />
-            </div>
+      <div>
+        <div className="container">
+          <div className="col-12 text-center menubackdrop">
+            <h1 className="display-1 text-center text-light">Menu</h1>
+            <p className="lead text-center text-light">
+              Choose from the options
+            </p>
+            {menuDisplay}
+            <br />
           </div>
         </div>
       </div>

@@ -7,6 +7,8 @@ import { removeGuestItem, submitOrder } from "../../actions/guestOrderActions";
 class Order extends Component {
   render() {
     const { items } = this.props.guestorder;
+    console.log("afssdfasdfdsa");
+    console.log(this.props.guestorder);
     return (
       <div>
         <div className="display-1">Order Summary</div>
@@ -42,6 +44,7 @@ class Order extends Component {
         <button
           className="btn btn-warning"
           onClick={() => this.props.submitOrder(this.props.guestorder)}
+          name={this.props.guestorder}
         >
           Submit Order
         </button>

@@ -7,6 +7,7 @@ module.exports = function validateMenuUpdateInput(data) {
   data.comboname = !isEmpty(data.comboname) ? data.comboname : "";
   data.price = !isEmpty(data.price) ? data.price : "";
   data.description = !isEmpty(data.description) ? data.description : "";
+  data.imageurl = !isEmpty(data.imageurl) ? data.imageurl : "";
 
   if (Validator.isEmpty(data.productid)) {
     errors.productid = "Combo Number is required";
@@ -23,6 +24,11 @@ module.exports = function validateMenuUpdateInput(data) {
   if (Validator.isEmpty(data.description)) {
     errors.description = "description is required";
   }
+  if (Validator.isEmpty(data.imageurl)) {
+    errors.imageurl = "Image url is required";
+  }
+
+  //imageurl
 
   return {
     errors,

@@ -4,11 +4,14 @@ import { ADD_ITEM, REMOVE_ITEM, CLEAR_ORDER } from "./types";
 
 // Get current MENU
 export const submitOrder = (order, userId) => dispatch => {
+  console.log("Entered Submit");
+  console.log(order);
+
   axios
     .post("/api/orders", {
       ...order,
       userId: userId,
-      items: order.items.map(item => item._id)
+      items: order.items.map(item => item)
     })
     .then(
       res =>

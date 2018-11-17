@@ -9,20 +9,37 @@ const OrderSchema = new Schema({
   },
   menuitems: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "menuitem"
+      _id: {
+        type: Schema.Types.ObjectId,
+        ref: "menuitem"
+      },
+      category: {
+        type: String
+      },
+      productid: {
+        type: String
+      },
+      comboname: {
+        type: String
+      },
+      price: {
+        type: Number,
+        required: true
+      },
+      description: {
+        type: String,
+        required: true
+      },
+      imageurl: {
+        type: String,
+        required: true
+      },
+      date: {
+        type: Date,
+        default: Date.now
+      }
     }
-  ],
-  specialinstructions: {
-    type: String
-  },
-  name: {
-    type: String
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  ]
 });
 
 module.exports = Order = mongoose.model("order", OrderSchema);
